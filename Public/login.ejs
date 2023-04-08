@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrv login</title>
+</head>
+<body>
+    <form>
+        <h2> Log in</h2>
+        <label for="email">enter your email</label>
+        <input type="text" id="email" required>
+        <div class="email error"></div>
+        
+        <label for="password">enter your password</label>
+        <input type="password" id="password" required>
+        <div class="password error"></div>
+        <button>Log in</button>
+    </form>
+    
+
+   <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+
+            let user_login = {
+                email: "",
+                password: ""
+            };
+            event.preventDefault();
+            user_login.email = document.getElementById("email").value;
+            user_login.password = document.getElementById("password").value;
+
+
+            console.log("user input object is ", user_login);
+            console.log(JSON.stringify(user_login));
+            try {
+                const res = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify(user_login),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+            catch (err) {
+                console.log(err);
+            }
+
+
+
+        })
+    </script>
+    
+    
+</body>
+</html>

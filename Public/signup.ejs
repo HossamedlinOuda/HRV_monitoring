@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrv signup</title>
+</head>
+
+<body>
+    <form>
+        <h2> signup</h2>
+        <label for="email">enter your email</label>
+        <input type="text" id="email" ><br>
+
+        <label for="first_name"> enter your first name </label>
+        <input type="text" id="first_name" ><br>
+        <label for="last_name"> enter your last name </label>
+        <input type="text" id="last_name" ><br>
+
+
+        <label for="password">enter your password</label>
+        <input type="password" id="password" ><br>
+
+
+
+        <label for="birth_Date">Choose your date of birth</label>
+        <input type="date" id="birth_Date" ><br>
+
+        <p>Please select your gender:</p>
+        <input type="radio" id="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female">
+        <label for="female">Female</label><br>
+
+        <button>Sign up</button>
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+
+            let user_signup = {
+                firstName: "",
+                lastName: "",
+                email: "",
+                birthDate: "",
+                gender: "",
+                password: ""
+            };
+            event.preventDefault();
+            user_signup.firstName = document.getElementById("first_name").value;
+            user_signup.lastName = document.getElementById("last_name").value;
+            user_signup.email = document.getElementById("email").value;
+            user_signup.birthDate = document.getElementById("birth_Date").value;
+            user_signup.password = document.getElementById("password").value;
+            if (document.getElementById('male').checked) {
+                user_signup.gender = "Male";
+            }
+            else if (document.getElementById('female').checked) {
+                user_signup.gender = "Female";
+            }
+
+
+            console.log("user input object is ", user_signup);
+            console.log(JSON.stringify(user_signup));
+            try {
+                const res = await fetch('/signup', {
+                    method: 'POST',
+                    body: JSON.stringify(user_signup),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+            catch (err) {
+                console.log(err);
+            }
+
+
+
+        })
+    </script>
+</body>
+
+</html>

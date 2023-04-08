@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1> Answer the Quesitons </h1>
+    <form>
+        <form>
+            <label for="obesity">Obese ?</label><br>
+            <select name="obesity" id="obesity">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>   
+
+            <label for="familyHypertension">Family Hypertension ?</label><br>
+            <select name="familyHypertension" id="familyHypertension">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+           
+            
+            <label for="familyDiabetes">Family Diabetes ?</label><br>
+            <select name="familyDiabetes" id="familyDiabetes">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+            
+            <label for="Diabetes">Diabetes ?</label><br>
+            <select name="Diabetes" id="Diabetes">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+
+            <label for="smoking">Smoking ?</label><br>
+            <select name="smoking" id="smoking">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+            
+            <label for="salt">Excess Salt intake ?</label><br>
+            <select name="salt" id="salt">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+            
+
+            <label for="kidney">Kidney disease ?</label><br>
+            <select name="kidney" id="kidney">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+
+            <label for="stress">Stressed ?</label><br>
+            <select name="stress" id="stress">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+            
+            <label for="Respiratory">Respiratory Problems ?</label><br>
+            <select name="Respiratory" id="Respiratory">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+
+            <label for="Medications">Medications ?</label><br>
+            <select name="Medications" id="Medications">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+
+            <label for="Pregnancy">Pregnancy ?</label><br>
+            <select name="Pregnancy" id="Pregnancy">
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select><br>
+            
+
+            <input type="submit" value="Submit">
+
+
+          </form>
+          
+    </form>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+
+            let user_background = {
+                    FamilyHistory_hypertension:"",
+                    FamilyHistory_diabetes:"",
+                    Stress:"",
+                    Diabetes:"",
+                    Smoking:"",
+                    Obesity:"",
+                    ExcessSaltIntake:"",
+                    KidneyDisease:"",
+                    ResipiratoryProblems:"",
+                    medications:"",
+                    Pregnancy:""
+                };
+                event.preventDefault();
+                user_background.Obesity = document.getElementById("obesity").value;
+                user_background.Pregnancy = document.getElementById("Pregnancy").value;
+                user_background.medications = document.getElementById("Medications").value;
+                user_background.ResipiratoryProblems = document.getElementById("Respiratory").value;
+                user_background.KidneyDisease = document.getElementById("kidney").value;
+                user_background.Smoking = document.getElementById("smoking").value;
+                user_background.Diabetes = document.getElementById("Diabetes").value;
+                user_background.FamilyHistory_hypertension = document.getElementById("familyHypertension").value;
+                user_background.FamilyHistory_diabetes = document.getElementById("familyDiabetes").value;
+                user_background.ExcessSaltIntake = document.getElementById("salt").value;
+                user_background.Stress= document.getElementById("stress").value;
+
+
+            console.log("user input object is ", user_background);
+            console.log(JSON.stringify(user_background));
+                    
+            try {
+                const res = await fetch('/AdditionalInfo', {
+                    method: 'POST',
+                    body: JSON.stringify(user_background),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+            catch (err) {
+                console.log(err);
+            }
+            location.replace("index.html");
+        })
+    </script>
+</body>
+
+</html>
