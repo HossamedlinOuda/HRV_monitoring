@@ -3,8 +3,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const requireAuth = (req, res, next) => {
     let token = req.headers.cookie;
+    console.log("TESTTTS" , req.cookies);
     //if this token exist then the user has logged in so we will check this token
-    if (token && token.startsWith("HRV_Dr")) {
+    if (token && token.includes("HRV_Dr")) {
+        token = token.slice(token.indexOf("HRV_Dr"));
         token = token.replace("HRV_Dr=", "");
         jwt.verify(token, "HRV_DOC_gradProject", (err, decodeToken) => {
             if (err) {
@@ -13,10 +15,8 @@ const requireAuth = (req, res, next) => {
             }
             else
             {
-
                 User.findById(decodeToken.id)
                     .then(doc => {
-                        console.log("THE RESULTS IN MIDDLEWARE ARE " , doc);
                         res.locals.user = doc;
                         next();
                     })

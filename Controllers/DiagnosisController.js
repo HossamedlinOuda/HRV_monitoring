@@ -259,7 +259,7 @@ module.exports.User_diagnosis_according_to_HRV = async(req,res)=>{
     // the following ranges is based on published papers 
 
 
-    const email = "test@gmail.com";
+    const email = res.locals.user.email;
     console.log("the recieved email is " , email);
     //const email = res.locals.user.email; 
     try {
