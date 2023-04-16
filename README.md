@@ -15,7 +15,7 @@ to get your results you can follow these steps:
   <li> add you information but make sure that the email is unique and the password is 6 character long and must contains at least 1 lowercase 1 uppercase 1 number 1 symbol.
     <li> After registering you can right click on the page-> inspect-> application you will find HRV_Dr cookie
     <li> Go to background check and answer the questions and click submit
-     <li> upload an excel file that contains the ecg signal from the upload button in the home page
+     <li> upload an excel file that contains the ecg signal from the upload button in the home page (I have upload on ecg file called Hossamfiltered in the project directory for testing)
        <li> after that click report and an alert will popup showing you the results 
 </ol>
 
