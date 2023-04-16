@@ -5,7 +5,7 @@
 <p> if you have node.js and npm installed you can simple run both of these commads <code>npm install</code> <code>nodemon server</code> and the application will be up in localhost:4000</p>
 
 <h3> Running project through link </h3>
-<p> you can run this project through this <a href="https://www.w3schools.com">link</a> </p>
+<p> you can run this project through this <a href="https://0422-99-248-144-93.ngrok-free.app/">link</a> </p>
 
 
 <h3> Use Scenario </h3>
